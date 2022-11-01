@@ -7,6 +7,7 @@ import java.util.Stack;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 
 class FileObserver extends android.os.FileObserver {
@@ -65,6 +66,7 @@ class FileObserver extends android.os.FileObserver {
     @Override
     public void onEvent(int event, final String path) {
         if (event == android.os.FileObserver.CLOSE_WRITE) {
+            Log.d("HBRecorder", "FILE Observer >> Close File now");
             new Handler(Looper.getMainLooper()).post(new Runnable() {
                 public void run() {
                     ml.onCompleteCallback();

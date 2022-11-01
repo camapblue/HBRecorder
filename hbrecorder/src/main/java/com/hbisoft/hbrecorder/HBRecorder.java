@@ -363,6 +363,7 @@ public class HBRecorder implements MyListener {
                             }
 
                         }else if (onComplete != null){
+                            Log.d("HBRecorder", "Service >> On Complete Now");
                             //Stop countdown if it was set
                             stopCountDown();
                             //OnComplete for when Uri was passed
@@ -408,6 +409,7 @@ public class HBRecorder implements MyListener {
                     @Override
                     public void run() {
                         try {
+                            Log.d("HBRecorder", "CountDown >> TimeOut");
                             stopScreenRecording();
                             observer.stopWatching();
                             hbRecorderListener.HBRecorderOnComplete();
@@ -435,6 +437,7 @@ public class HBRecorder implements MyListener {
     /*Complete callback method*/
     @Override
     public void onCompleteCallback() {
+        Log.d("HBRecorder", "MyListener >> On Complete");
         observer.stopWatching();
         hbRecorderListener.HBRecorderOnComplete();
     }
